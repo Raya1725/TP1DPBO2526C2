@@ -1,4 +1,5 @@
 public class Bioskop {
+    private int id;
     private String nama;
     private String alamat;
     private int jumlah_studio;
@@ -7,13 +8,20 @@ public class Bioskop {
     Bioskop(){
 
     }
-    Bioskop(String nama, String alamat, int jumlah_studio, String kota){
+    Bioskop(int id, String nama, String alamat, int jumlah_studio, String kota){
+        this.id = id;
         this.nama = nama;
         this.alamat = alamat;
         this.jumlah_studio = jumlah_studio;
         this.kota = kota;
     }
 
+    void setid(int id){
+        this.id = id;
+    }
+    int getid(){
+        return this.id;
+    }
     void setnama(String nama){
         this.nama = nama;
     }
