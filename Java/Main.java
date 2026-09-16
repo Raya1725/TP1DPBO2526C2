@@ -23,6 +23,7 @@ public class Main{
                 String kota = sc.nextLine();
                 Bioskop B = new Bioskop(id, nama, alamat, jumlah_studio, kota);
                 daftarBioskop.add(B);
+                System.out.println("data berhasil dimasukan coyy uhuyyy geloo brutal");
             }
             else if("show".equalsIgnoreCase(pilihan)){
                 if(daftarBioskop.isEmpty()){
