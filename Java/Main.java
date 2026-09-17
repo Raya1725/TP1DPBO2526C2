@@ -115,6 +115,9 @@ public class Main{
                 System.out.println("Exit: Untuk keluar dari program");
                 System.out.println("Penggunaan huruf besar dan kecil tidak berpengaruh");
             }
+            else if("delete".equalsIgnoreCase(pilihan)){
+                
+            }
             else{
                 System.out.println("Perintah tidak dikenali... (nyawit ni)");
             }
