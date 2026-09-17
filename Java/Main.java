@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Main{
     public static void main(String[] args) {
@@ -7,6 +8,7 @@ public class Main{
         Scanner sc = new Scanner(System.in);
         String pilihan;
         do{
+            System.out.print("Masukan perintah (masukan help jika tidak tahu): ");
             pilihan = sc.nextLine();
             if("insert".equalsIgnoreCase(pilihan)){
                 System.out.print("Masukan Id: ");
@@ -43,14 +45,78 @@ public class Main{
                 }
             }
             else if("update".equalsIgnoreCase(pilihan)){
+                System.out.print("Masukan id bioskop yang mau diubah : ");
                 int ubah = sc.nextInt();
                 sc.nextLine();
                 boolean ketemu = false;
-                for(Bioskop B : daftarBioskop){
-
+                Iterator<Bioskop> iter = daftarBioskop.iterator();
+                while(ketemu == false && iter.hasNext()){
+                    Bioskop B = iter.next();
+                    if(B.getid() == ubah){
+                        ketemu = true;
+                        System.out.println(" " + B.getnama());
+                        System.out.println("Apa yang mau diubah?");
+                        System.out.println("1,Nama");
+                        System.out.println("2,Alamat");
+                        System.out.println("3,Jumlah Studio");
+                        System.out.println("4,Kota");
+                        System.out.println("5,Semua (kecuali id)");
+                        int update_yang_mana = sc.nextInt();
+                        sc.nextLine();
+                        if(update_yang_mana == 1){
+                            System.out.print("Masukan nama: ");
+                            B.setnama(sc.nextLine());
+                            System.out.println("Pergantian nama berhasil...");
+                        }
+                        else if(update_yang_mana == 2){
+                            System.out.print("Masukan alamat: ");
+                            B.setalamat(sc.nextLine());
+                            System.out.println("Pergantian alamat berhasil...");
+                        }
+                        else if(update_yang_mana == 3){
+                            System.out.print("Masukan jumlah studio: ");
+                            B.setjumlah_studio(sc.nextInt());
+                            sc.nextLine();
+                            System.out.println("Pergantian jumlah studio berhasil...");
+                        }
+                        else if(update_yang_mana == 4){
+                            System.out.print("Masukan kota: ");
+                            B.setkota(sc.nextLine());
+                            System.out.println("Pergantian kota berhasil...");
+                        }
+                        else if(update_yang_mana == 5){
+                            System.out.print("Masukan nama: ");
+                            B.setnama(sc.nextLine());
+                            System.out.print("Masukan alamat: ");
+                            B.setalamat(sc.nextLine());
+                            System.out.print("Masukan jumlah studio: ");
+                            B.setjumlah_studio(sc.nextInt());
+                            sc.nextLine();
+                            System.out.print("Masukan kota: ");
+                            B.setkota(sc.nextLine());
+                            System.out.println("Pergantian seluruh data berhasil...");
+                        }
+                        else{
+                            System.out.println("Nomor tidak valid");
+                        }
+                    }
                 }
-
-
+                if(ketemu == false){
+                    System.out.println("Kode tidak ditemukan.....");
+                }
+            }
+            else if("help".equalsIgnoreCase(pilihan)){
+                System.out.println("berbagai Macam fitur: ");
+                System.out.println("insert: Untuk tambah data baru");
+                System.out.println("Show: Untuk menampilkan data yang ada");
+                System.out.println("Update: Untuk mengedit data yang ada");
+                System.out.println("Delete: Untuk menghapus data");
+                System.out.println("Search: untuk mencari data");
+                System.out.println("Exit: Untuk keluar dari program");
+                System.out.println("Penggunaan huruf besar dan kecil tidak berpengaruh");
+            }
+            else{
+                System.out.println("Perintah tidak dikenali... (nyawit ni)");
             }
         }while(!"exit".equalsIgnoreCase(pilihan));
         sc.close();
