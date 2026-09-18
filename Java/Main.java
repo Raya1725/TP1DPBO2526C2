@@ -42,7 +42,7 @@ public class Main{
                 String nama = sc.nextLine();
                 System.out.print("Masukan Alamat: ");
                 String alamat = sc.nextLine();
-                System.out.print("Masukan Jumlah Studiot: ");
+                System.out.print("Masukan Jumlah Studio: ");
                 int jumlah_studio = sc.nextInt(); 
                 sc.nextLine();
                 System.out.print("Masukan Kota: ");
