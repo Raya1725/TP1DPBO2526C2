@@ -239,6 +239,7 @@ public class Main{
                 System.out.println("Delete: Untuk menghapus data");
                 System.out.println("Search: untuk mencari data");
                 System.out.println("Exit: Untuk keluar dari program");
+                System.out.println("Help: jika lupa apa saja perintah yang ada");
             }
             else if("delete".equalsIgnoreCase(pilihan)){
                 System.out.print("Masukan id bioskop yang mau dihapus: ");

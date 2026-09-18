@@ -25,16 +25,31 @@ int main(){
             int id = 0;
             cout << "Masukan id: ";
             cin >> id;
+            while(cin.fail()){
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Masukan hanya angka: ";
+                cin >> id;
+            }
+            cin.ignore();
             while(iter != daftarbioskop.end()){
-                Bioskop B;
+                Bioskop &B = *iter;
                 if(B.getid() == id){
                     int id_ada = B.getid();
                     while(id_ada == id){
                         cout << "Id sudah ada, masukan yang lain: ";
                         cin >> id;
+                        while(cin.fail()){
+                            cin.clear();
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                            cout << "Masukan hanya angka: ";
+                            cin >> id;
+                        }
                     }
                 }
-                iter++;
+                else{
+                    iter++;
+                }
             }
             cout << "Masukan Nama: ";
             string nama;
@@ -45,6 +60,12 @@ int main(){
             cout << "Masukan Jumlah Studio: ";
             int jumlah_studio;
             cin >> jumlah_studio;
+            while(cin.fail()){
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Masukan hanya angka: ";
+                cin >> jumlah_studio;
+            }
             cout << "Masukan Kota: ";
             string kota;
             cin >> kota;
@@ -171,13 +192,155 @@ int main(){
             }
         }
         else if(pilihan == "update" || pilihan == "Update"){
-
+            cout << "Masukan id bioskop yang mau diubah: ";
+            int ubah = 0;
+            cin >> ubah;
+            while(cin.fail()){
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Masukan hanya angka: ";
+                cin >> ubah;
+            }
+            bool ketemu = false;
+            iter = daftarbioskop.begin();
+            while(ketemu == false && iter != daftarbioskop.end()){
+                Bioskop &B = *iter;
+                if(B.getid() == ubah){
+                    ketemu = true;
+                    cout << "apa yang mau diubah: " << endl;
+                    cout << "1, Nama: " << endl;
+                    cout << "2, Alamat: " << endl;
+                    cout << "3, Jumlah Studio: " << endl;
+                    cout << "4, Kota: " << endl;
+                    cout << "5, semua (Kecuali id): " << endl;
+                    cout << "Masukan Nomor: ";
+                    int update_pilihan;
+                    cin >> update_pilihan;
+                    if(update_pilihan == 1){
+                        cout << "Masukan nama: ";
+                        string nama;
+                        cin >> nama;
+                        B.setnama(nama);
+                        cout << "Pergantian nama berhasil...." << endl;
+                    }
+                    else if(update_pilihan == 2){
+                        cout << "Masukan alamat: ";
+                        string alamat;
+                        cin >> alamat;
+                        B.setalamat(alamat);
+                        cout << "Pergantian alamat berhasil...." << endl;
+                    }
+                    else if(update_pilihan == 3){
+                        cout << "Masukan jumlah studio: ";
+                        int jumlah;
+                        cin >> jumlah;
+                        while(cin.fail()){
+                            cin.clear();
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                            cout << "Masukan hanya angka: ";
+                            cin >> jumlah;
+                        }
+                        B.setjumlah_studio(jumlah);
+                        cout << "Pergantian jumlah studio berhasil...." << endl;
+                    }
+                    else if(update_pilihan == 4){
+                        cout << "Masukan kota: ";
+                        string kota;
+                        cin >> kota;
+                        B.setkota(kota);
+                        cout << "Pergantian kota berhasil...." << endl;
+                    }
+                    else if(update_pilihan == 5){
+                        cout << "Masukan nama: " ;
+                        string semua;
+                        cin >> semua;
+                        B.setnama(semua);
+                        cout << "Masukan alamat: ";
+                        cin >> semua;
+                        B.setalamat(semua);
+                        int angka;
+                        cout << "Masukan jumlah studio: ";
+                        cin >> angka;
+                        B.setjumlah_studio(angka);
+                        cout << "Masukan jumlah kota: ";
+                        cin >> semua;
+                        B.setkota(semua);
+                        cout << "Pergantian seluruh data berhasil...." << endl;
+                    }
+                }
+                else{
+                    iter++;
+                }
+            }
+            if(ketemu == false){
+                cout << "data tidak ditemukan....." << endl;
+            }
         }
         else if(pilihan == "delete" || pilihan == "Delete"){
-            
+            cout << "Masukan id bioskop yang mau dihapus: ";
+            int hapus = 0;
+            cin >> hapus;
+            while(cin.fail()){
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Masukan hanya angka: ";
+                cin >> hapus;
+            }
+            bool ketemu = false;
+            iter = daftarbioskop.begin();
+            while(ketemu == false && iter != daftarbioskop.end()){
+                if(iter->getid() == hapus){
+                    ketemu = true;
+                    iter = daftarbioskop.erase(iter);
+                    cout << "data berhasil dihapus...." << endl;
+                }
+                else{
+                    iter++;
+                }
+            }
+            if(ketemu == false){
+                cout << "data tidak ditemukan..." << endl;
+            }
         }
         else if(pilihan == "search" || pilihan == "Search"){
-
+            cout << "Masukan id bioskop yang mau dicari: ";
+            int cari = 0;
+            cin >> cari;
+            while(cin.fail()){
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Masukan hanya angka: ";
+                cin >> cari;
+            }
+            bool ketemu = false;
+            iter = daftarbioskop.begin();
+            while(ketemu == false && iter != daftarbioskop.end()){
+                if(iter->getid() == cari){
+                    ketemu = true;
+                    cout << "Id: "<< iter->getid() << endl;
+                    cout << "Nama: "<< iter->getnama() << endl;
+                    cout << "Alamat: " << iter->getalamat() << endl;
+                    cout << "jumlah studio: "<< iter->getjumlah_studio() << endl;
+                    cout << "Kota: " << iter->getkota() << endl;
+                }
+                else{
+                    iter++;
+                }
+            }
+            if(ketemu == false){
+                cout << "data tidak ditemukan..." << endl;
+            }
+        }
+        else if(pilihan == "help" || pilihan == "Help"){
+            cout << "<<<<<<<<<<<< Menu utak atik data bioskop >>>>>>>>>>>>>" << endl;
+            cout << endl;
+            cout << "insert: Untuk tambah data baru" << endl;
+            cout << "show: Untuk menampilkan data yang ada << endl";
+            cout << "Update: Untuk mengedit data yang ada" << endl;
+            cout << "Delete: Untuk menghapus data" << endl;
+            cout << "Search: untuk mencari data" << endl;
+            cout << "Exit: Untuk keluar dari program" << endl;
+            cout << "Help: untuk melihat perintah pada program ini" << endl;
         }
         else{
             if(pilihan != "exit" && pilihan != "Exit"){
