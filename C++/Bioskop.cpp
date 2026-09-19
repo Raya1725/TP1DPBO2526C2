@@ -1,6 +1,7 @@
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
+//deklarasi kelas baru dengan nama Bioskop
 class Bioskop {
 private:
     int id;
@@ -10,9 +11,13 @@ private:
     string kota;
 
 public:
-    Bioskop(){
+    Bioskop(){//konstruktor untuk class Bioskop
 
     }
+    /*
+    konstruktor juga, konstruktor ini digunakan jika user mau langsung
+    memasukan data ke dalam class nya, ibaratnya konstruktor tapi dengan isi nya
+    */
     Bioskop(int id, string nama, string alamat, int jumlah_studio, string kota){
         this->id = id;
         this->nama = nama;
@@ -20,7 +25,7 @@ public:
         this->jumlah_studio = jumlah_studio;
         this->kota = kota;
     }
-
+    //metode untuk meminta data dan men set atau memasukan data 
     void setid(int id){
         this->id = id;
     }

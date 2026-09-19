@@ -73,79 +73,12 @@ public class Main{
                     int spasi_kota = 0;
                     int spasi_id = 0;
                     int spasi_jumlah = 0;
-                    for(int i = 0; i < daftarBioskop.size(); i++){
-                        Bioskop depan = daftarBioskop.get(i);
-                        if(i + 1 < daftarBioskop.size()){
-                            Bioskop Belakang = daftarBioskop.get(i + 1);
-                            if(depan.getnama().length() > Belakang.getnama().length()){
-                                if(spasi_nama < depan.getnama().length() + 2){
-                                    spasi_nama = depan.getnama().length() + 2;
-                                }
-                            }
-                            if(depan.getnama().length() < Belakang.getnama().length()){
-                                if(spasi_nama < Belakang.getnama().length() + 2){
-                                    spasi_nama = Belakang.getnama().length() + 2;
-                                }
-                            }
-                            if(depan.getalamat().length() > Belakang.getalamat().length()){
-                                if(spasi_alamat < depan.getalamat().length() + 2){
-                                    spasi_alamat = depan.getalamat().length() + 2;
-                                }
-                            }
-                            if(depan.getalamat().length() < Belakang.getalamat().length()){
-                                if(spasi_alamat < Belakang.getalamat().length() + 2){
-                                    spasi_alamat = Belakang.getalamat().length() + 2;
-                                }
-                            } 
-                            if(depan.getkota().length() > Belakang.getkota().length()){
-                                if(spasi_kota < depan.getkota().length() + 2){
-                                    spasi_kota = depan.getkota().length() + 2;
-                                }
-                            }
-                            if(depan.getkota().length() < Belakang.getkota().length()){
-                                if(spasi_kota < Belakang.getkota().length() + 2){
-                                    spasi_kota = Belakang.getkota().length() + 2;
-                                }
-                            } 
-                            if(String.valueOf(depan.getid()).length() > String.valueOf(Belakang.getid()).length()){
-                                if(spasi_id < String.valueOf(depan.getid()).length() + 2){
-                                    spasi_id = String.valueOf(depan.getid()).length() + 2;
-                                }
-                            }
-                            if(String.valueOf(depan.getid()).length() < String.valueOf(Belakang.getid()).length()){
-                                if(spasi_id < String.valueOf(Belakang.getid()).length() + 2){
-                                    spasi_id = String.valueOf(Belakang.getid()).length() + 2;
-                                }
-                            } 
-                            if(String.valueOf(depan.getjumlah_studio()).length() > String.valueOf(Belakang.getjumlah_studio()).length()){
-                                if(spasi_jumlah < String.valueOf(depan.getjumlah_studio()).length() + 2){
-                                    spasi_jumlah = String.valueOf(depan.getjumlah_studio()).length() + 2;
-                                }
-                            }
-                            if(String.valueOf(depan.getjumlah_studio()).length() < String.valueOf(Belakang.getjumlah_studio()).length()){
-                                if(spasi_jumlah < String.valueOf(Belakang.getjumlah_studio()).length() + 2){
-                                    spasi_jumlah = String.valueOf(Belakang.getjumlah_studio()).length() + 2;
-                                }
-                            } 
-                             
-                        }
-                        else{
-                            if(spasi_nama < depan.getnama().length() + 2){
-                                spasi_nama = depan.getnama().length() + 2;
-                            }
-                            if(spasi_alamat < depan.getalamat().length() + 2){
-                                spasi_alamat = depan.getalamat().length() + 2;
-                            }
-                            if(spasi_kota < depan.getkota().length() + 2){
-                                spasi_kota = depan.getkota().length() + 2;
-                            }
-                            if(spasi_jumlah < String.valueOf(depan.getjumlah_studio()).length() + 2){
-                                spasi_jumlah = String.valueOf(depan.getjumlah_studio()).length() + 2;
-                            }
-                            if(spasi_id < String.valueOf(depan.getid()).length() + 2){
-                                spasi_id = String.valueOf(depan.getid()).length() + 2;
-                            }
-                        }
+                    for (Bioskop b : daftarBioskop) {
+                        spasi_nama   = Math.max(spasi_nama, b.getnama().length() + 2);
+                        spasi_alamat = Math.max(spasi_alamat, b.getalamat().length() + 2);
+                        spasi_kota   = Math.max(spasi_kota, b.getkota().length() + 2);
+                        spasi_id     = Math.max(spasi_id, String.valueOf(b.getid()).length() + 2);
+                        spasi_jumlah = Math.max(spasi_jumlah, String.valueOf(b.getjumlah_studio()).length() + 2);
                     }
                     System.out.println("Daftar Bioskop yang tersedia: ");
                     for(int i = 0; i < spasi_alamat + spasi_kota + spasi_nama + 53; i++){

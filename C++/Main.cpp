@@ -6,7 +6,8 @@ int main(){
 
     ios::sync_with_stdio(0);
 
-    vector<Bioskop> daftarbioskop;
+    //deklarasi vector baru dengan nama daftar bioskop untuk menyimpan data bioskop
+    vector<Bioskop> daftarbioskop;  
     string pilihan;
     cout << "<<<<<<<<<<<< Menu utak atik data bioskop >>>>>>>>>>>>>" << endl;
     cout << endl;
@@ -17,23 +18,33 @@ int main(){
     cout << "Search: untuk mencari data" << endl;
     cout << "Exit: Untuk keluar dari program" << endl;
     cout << "Help: untuk melihat perintah pada program ini" << endl;
-    do{
-        vector<Bioskop>:: iterator iter = daftarbioskop.begin();
+    do{//perulangan do while atau meminta masukan dulu baru mengecek kondisi di akhir
+        vector<Bioskop>:: iterator iter = daftarbioskop.begin();//deklarasi iterator atau pengecek untuk vector daftarbioskop
         cout << "masukan perintah: ";
-        cin >> pilihan;
+        cin >> pilihan;//meminta masukan user
+        //jika user memilih menu insert atau memasukan data ke dalam vector
         if(pilihan == "insert" || pilihan == "Insert"){
             int id = 0;
             cout << "Masukan id: ";
+            //user diminta memasukan data yang dibutuhkan seperti id, nama, alamat, jumlah studio dan kota
             cin >> id;
+            /*
+            untuk melakukan cek apakah masukan user berupa angka atau bukan
+            jika bukan angka, maka user diminta memasukan lagi
+            */ 
             while(cin.fail()){
+                //reset status error cin atau masukan
                 cin.clear();
+                //buang sisa input untuk memasukan nya lagi
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cout << "Masukan hanya angka: ";
                 cin >> id;
             }
-            cin.ignore();
+            cin.ignore();//buang karakter sisa untuk membersihkan masukan
+            //perulangan untuk mengecek apakah id masukan user sudah ada atau belum
             while(iter != daftarbioskop.end()){
                 Bioskop &B = *iter;
+                //kondisi jika id masukan user sudah ada di vector
                 if(B.getid() == id){
                     int id_ada = B.getid();
                     while(id_ada == id){
@@ -69,92 +80,31 @@ int main(){
             cout << "Masukan Kota: ";
             string kota;
             cin >> kota;
+            //memasukan data dengan konstruk bioskopp baru lalu sekalian memasukan data kedalamnya
             Bioskop B = Bioskop(id, nama, alamat, jumlah_studio, kota);
-            daftarbioskop.push_back(B);
+            daftarbioskop.push_back(B);//memasukan data ke dalam vector
             cout << "Data Berhasil Dimasukan, geloooo disini juga berhasill" << endl;
         }
+        //salah satu opsi perintah, perintah inin adalah untuk menampikan semua data yang ada di vector
         else if(pilihan == "show" || pilihan == "Show"){
-            if(daftarbioskop.empty()){
+            if(daftarbioskop.empty()){//kondisi jika vector daftar bioskop kosong
                 cout << "Kosong loh yahhh" << endl;
             }
             else{
+                //ini adalah algoritma untuk menghitung spasi dari setiap data
+                //berbagai variabel untuk menyimpan data masing masing spasi
                 int spasi_nama = 0;
                 int spasi_alamat = 0;
                 int spasi_kota = 0;
                 int spasi_id = 0;
                 int spasi_jumlah = 0;
-                for(int i =  0; i < daftarbioskop.size(); i++){
-                    Bioskop depan = daftarbioskop[0];
-                    if(i + 1 < daftarbioskop.size()){
-                        Bioskop belakang = daftarbioskop[1];
-                        if(to_string(depan.getid()).length() > to_string(belakang.getid()).length()){
-                            if(spasi_id < to_string(depan.getid()).length() + 2){
-                                spasi_id = to_string(depan.getid()).length() + 2;
-                            }
-                        }
-                        if(to_string(depan.getid()).length() < to_string(belakang.getid()).length()){
-                            if(spasi_id < to_string(belakang.getid()).length() + 2){
-                                spasi_id = to_string(belakang.getid()).length() + 2;
-                            }
-                        }
-                        if(to_string(depan.getjumlah_studio()).length() > to_string(belakang.getjumlah_studio()).length()){
-                            if(spasi_jumlah < to_string(depan.getjumlah_studio()).length() + 2){
-                                spasi_jumlah = to_string(depan.getjumlah_studio()).length() + 2;
-                            }
-                        }
-                        if(to_string(depan.getjumlah_studio()).length() < to_string(belakang.getjumlah_studio()).length()){
-                            if(spasi_jumlah < to_string(belakang.getjumlah_studio()).length() + 2){
-                                spasi_jumlah = to_string(belakang.getjumlah_studio()).length() + 2;
-                            }
-                        }
-                        if(depan.getnama().length() > belakang.getnama().length()){
-                            if(spasi_nama < depan.getnama().length() + 2){
-                                spasi_nama = depan.getnama().length() + 2;
-                            }
-                        }
-                        if(depan.getnama().length() < belakang.getnama().length()){
-                            if(spasi_nama < belakang.getnama().length() + 2){
-                                spasi_nama = belakang.getnama().length() + 2;
-                            }
-                        }
-                        if(depan.getalamat().length() > belakang.getalamat().length()){
-                            if(spasi_alamat < depan.getalamat().length() + 2){
-                                spasi_alamat = depan.getalamat().length() + 2;
-                            }
-                        }
-                        if(depan.getalamat().length() < belakang.getalamat().length()){
-                            if(spasi_alamat < belakang.getalamat().length() + 2){
-                                spasi_alamat = belakang.getalamat().length() + 2;
-                            }
-                        }
-                        if(depan.getkota().length() > belakang.getkota().length()){
-                            if(spasi_kota < depan.getkota().length() + 2){
-                                spasi_kota = depan.getkota().length() + 2;
-                            }
-                        }
-                        if(depan.getkota().length() < belakang.getkota().length()){
-                            if(spasi_kota < belakang.getkota().length() + 2){
-                                spasi_kota = belakang.getkota().length() + 2;
-                            }
-                        }      
-                    }
-                    else{
-                        if(spasi_nama < depan.getnama().length() + 2){
-                            spasi_nama = depan.getnama().length() + 2;
-                        }
-                        if(spasi_alamat < depan.getalamat().length() + 2){
-                            spasi_alamat = depan.getalamat().length() + 2;
-                        }
-                        if(spasi_kota < depan.getkota().length() + 2){
-                            spasi_kota = depan.getkota().length() + 2;
-                        }
-                        if(spasi_jumlah < to_string(depan.getjumlah_studio()).length() + 2){
-                            spasi_jumlah = to_string(depan.getjumlah_studio()).length() + 2;
-                        }
-                        if(spasi_id < to_string(depan.getid()).length() + 2){
-                            spasi_id = to_string(depan.getid()).length() + 2;
-                        }
-                    }
+                //perulangan for untuk melakukan perhitungan masing masing spasi
+                for (Bioskop B : daftarbioskop) {
+                    spasi_id     = std::max(spasi_id,     static_cast<int>(std::to_string(B.getid()).length() + 2));
+                    spasi_jumlah = std::max(spasi_jumlah, static_cast<int>(std::to_string(B.getjumlah_studio()).length() + 2));
+                    spasi_nama   = std::max(spasi_nama,   static_cast<int>(B.getnama().length() + 2));
+                    spasi_alamat = std::max(spasi_alamat, static_cast<int>(B.getalamat().length() + 2));
+                    spasi_kota   = std::max(spasi_kota,   static_cast<int>(B.getkota().length() + 2));
                 }
                 cout << "Daftar Bioskop yang Tersedia: " << endl;
                 for(int i = 0; i < spasi_alamat + spasi_kota + spasi_nama + 53; i++){
