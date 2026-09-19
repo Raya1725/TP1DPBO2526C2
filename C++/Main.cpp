@@ -106,6 +106,8 @@ int main(){
                     spasi_alamat = max(spasi_alamat, static_cast<int>(B.getalamat().length() + 2));
                     spasi_kota   = max(spasi_kota,   static_cast<int>(B.getkota().length() + 2));
                 }
+                //Menampilkan data Bioskop yang tersedia atau yang ada
+                //data ditampilkan dalam format tabel yang dinamis menyesuaikan panjang dari setiap data 
                 cout << "Daftar Bioskop yang Tersedia: " << endl;
                 for(int i = 0; i < spasi_alamat + spasi_kota + spasi_nama + 53; i++){
                     cout << "_";
@@ -141,6 +143,9 @@ int main(){
                 cout << endl;
             }
         }
+        //salah satu opsi perintah yaitu update
+        //update adalah mengedit isi atribut dari suatu data seperti nama, alamat dll
+        //algoritma update menggunakan id sebagai parameter data mana yang mau di ubah
         else if(pilihan == "update" || pilihan == "Update"){
             cout << "Masukan id bioskop yang mau diubah: ";
             int ubah = 0;
@@ -153,10 +158,17 @@ int main(){
             }
             bool ketemu = false;
             iter = daftarbioskop.begin();
+            //perulangan sampai bertemu data yang sesuai dengan id yang dimasukan
+            //jika tidak ketemu maka algoritma akan mengeluarkan kalimat bahwa data tidak ditemukan
             while(ketemu == false && iter != daftarbioskop.end()){
                 Bioskop &B = *iter;
-                if(B.getid() == ubah){
+                if(B.getid() == ubah){//kondisi jika data ditemukan
                     ketemu = true;
+                    //disini saya memberikan banyak opsi untuk data apa yang mau diubah
+                    /*
+                    contohnya jika user memasukan nomor 1, maka user akan diminta
+                    memasukan nama baru untuk mengganti nama yang ada di dalam vector
+                    */
                     cout << "apa yang mau diubah: " << endl;
                     cout << "1, Nama: " << endl;
                     cout << "2, Alamat: " << endl;
@@ -172,6 +184,7 @@ int main(){
                         cout << "Masukan hanya angka: ";
                         cin >> update_pilihan;
                     }
+                    //berbagai kondisi sesuai apa yang dipilih oleh user
                     if(update_pilihan == 1){
                         cout << "Masukan nama: ";
                         string nama;
@@ -224,6 +237,7 @@ int main(){
                         cout << "Pergantian seluruh data berhasil...." << endl;
                     }
                 }
+                //jika data tidak ditemukan maka iterator akan maju
                 else{
                     iter++;
                 }
@@ -232,6 +246,10 @@ int main(){
                 cout << "data tidak ditemukan....." << endl;
             }
         }
+        //salah satu opsi perintah yaitu delete
+        //fungsi peintah ini adalah untuk menghapus data di dalam vector sesuai masukan user
+        //user diminta memasukan data berupa id lalu dicocokan ke dalam data dalam vector
+        //setelah itu data akan terhapus
         else if(pilihan == "delete" || pilihan == "Delete"){
             cout << "Masukan id bioskop yang mau dihapus: ";
             int hapus = 0;
@@ -254,10 +272,14 @@ int main(){
                     iter++;
                 }
             }
+            //kondisi jika data id masukan user tidak ditemukan dalam vector
             if(ketemu == false){
                 cout << "data tidak ditemukan..." << endl;
             }
         }
+        //salah satu opsi perintah yaitu search atau untuk melakukan pencarian data spesifik
+        //user diminta memasukan data berupa id, lalu algoritma akan menampilkan
+        //data nama, alamat dll yang sesuai dengan id yang dimasukan user
         else if(pilihan == "search" || pilihan == "Search"){
             cout << "Masukan id bioskop yang mau dicari: ";
             int cari = 0;
@@ -270,6 +292,7 @@ int main(){
             }
             bool ketemu = false;
             iter = daftarbioskop.begin();
+            //perulangan untuk mencari data sesuai masukan user
             while(ketemu == false && iter != daftarbioskop.end()){
                 if(iter->getid() == cari){
                     ketemu = true;
@@ -287,6 +310,10 @@ int main(){
                 cout << "data tidak ditemukan..." << endl;
             }
         }
+        //salah satu opsi perintah, perintah ini untuk menampilkan kembali
+        //menu awal yang isinya penjelasan setiap perintah
+        //saya buat perintah ini agar user yang lupa perintah perintah nya
+        //bisa mengetahui nya kembali dengan perintah ini
         else if(pilihan == "help" || pilihan == "Help"){
             cout << "<<<<<<<<<<<< Menu utak atik data bioskop >>>>>>>>>>>>>" << endl;
             cout << endl;
@@ -298,11 +325,16 @@ int main(){
             cout << "Exit: Untuk keluar dari program" << endl;
             cout << "Help: untuk melihat perintah pada program ini" << endl;
         }
+        //jika user memasukan perintah selain yang saya seddiakan
         else{
+            //kondisi untuk mengatasi jika user memasukan exit
+            //karena exit tidak saya masukan ke perkondisian karena bagian dari kondisi
+            //untukk mengakhiri program
             if(pilihan != "exit" && pilihan != "Exit"){
                 cout << "Perintah tidak dikenali... (nyawit ni)\n";
             }
         }
+        //Program atau algoritma berhenti jika user memasukan exit atau Exit
     }while(pilihan != "exit" && pilihan != "Exit");
 
 
