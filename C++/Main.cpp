@@ -1,4 +1,8 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+#include <limits>
 #include "Bioskop.cpp"
 using namespace std;
 
@@ -12,7 +16,7 @@ int main(){
     cout << "<<<<<<<<<<<< Menu utak atik data bioskop >>>>>>>>>>>>>" << endl;
     cout << endl;
     cout << "insert: Untuk tambah data baru" << endl;
-    cout << "show: Untuk menampilkan data yang ada << endl";
+    cout << "show: Untuk menampilkan data yang ada" << endl;
     cout << "Update: Untuk mengedit data yang ada" << endl;
     cout << "Delete: Untuk menghapus data" << endl;
     cout << "Search: untuk mencari data" << endl;

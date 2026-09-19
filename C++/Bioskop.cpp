@@ -1,4 +1,3 @@
-#include <bits/stdc++.h>
 using namespace std;
 
 //deklarasi kelas baru dengan nama Bioskop
