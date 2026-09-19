@@ -100,11 +100,11 @@ int main(){
                 int spasi_jumlah = 0;
                 //perulangan for untuk melakukan perhitungan masing masing spasi
                 for (Bioskop B : daftarbioskop) {
-                    spasi_id     = std::max(spasi_id,     static_cast<int>(std::to_string(B.getid()).length() + 2));
-                    spasi_jumlah = std::max(spasi_jumlah, static_cast<int>(std::to_string(B.getjumlah_studio()).length() + 2));
-                    spasi_nama   = std::max(spasi_nama,   static_cast<int>(B.getnama().length() + 2));
-                    spasi_alamat = std::max(spasi_alamat, static_cast<int>(B.getalamat().length() + 2));
-                    spasi_kota   = std::max(spasi_kota,   static_cast<int>(B.getkota().length() + 2));
+                    spasi_id     = max(spasi_id,     static_cast<int>(to_string(B.getid()).length() + 2));
+                    spasi_jumlah = max(spasi_jumlah, static_cast<int>(to_string(B.getjumlah_studio()).length() + 2));
+                    spasi_nama   = max(spasi_nama,   static_cast<int>(B.getnama().length() + 2));
+                    spasi_alamat = max(spasi_alamat, static_cast<int>(B.getalamat().length() + 2));
+                    spasi_kota   = max(spasi_kota,   static_cast<int>(B.getkota().length() + 2));
                 }
                 cout << "Daftar Bioskop yang Tersedia: " << endl;
                 for(int i = 0; i < spasi_alamat + spasi_kota + spasi_nama + 53; i++){
