@@ -216,6 +216,12 @@ int main(){
                     cout << "Masukan Nomor: ";
                     int update_pilihan;
                     cin >> update_pilihan;
+                    while(cin.fail()){
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        cout << "Masukan hanya angka: ";
+                        cin >> update_pilihan;
+                    }
                     if(update_pilihan == 1){
                         cout << "Masukan nama: ";
                         string nama;
