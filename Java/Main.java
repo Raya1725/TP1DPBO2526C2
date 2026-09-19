@@ -25,6 +25,10 @@ public class Main{
             if("insert".equalsIgnoreCase(pilihan)){
                 int id = 0;
                 System.out.print("Masukan id: ");
+                while(!sc.hasNextInt()){
+                    System.out.print("Masukan hanya angka: ");
+                    sc.next();
+                }
                 id = sc.nextInt();
                 sc.nextLine();
                 while(iter.hasNext()){
@@ -33,6 +37,10 @@ public class Main{
                         int id_ada = B.getid();
                         while(id_ada == id){
                             System.out.print("Id sudah ada, masukan yang lain: ");
+                            while(!sc.hasNextInt()){
+                                System.out.print("Masukan hanya angka: ");
+                                sc.next();
+                            }
                             id = sc.nextInt();
                             sc.nextLine();
                         }
@@ -43,6 +51,10 @@ public class Main{
                 System.out.print("Masukan Alamat: ");
                 String alamat = sc.nextLine();
                 System.out.print("Masukan Jumlah Studio: ");
+                while(!sc.hasNextInt()){
+                    System.out.print("Masukan hanya angka: ");
+                    sc.next();
+                }
                 int jumlah_studio = sc.nextInt(); 
                 sc.nextLine();
                 System.out.print("Masukan Kota: ");
@@ -172,6 +184,10 @@ public class Main{
             }
             else if("update".equalsIgnoreCase(pilihan)){
                 System.out.print("Masukan id bioskop yang mau diubah: ");
+                while(!sc.hasNextInt()){
+                    System.out.print("Masukan hanya angka: ");
+                    sc.next();
+                }
                 int ubah = sc.nextInt();
                 sc.nextLine();
                 boolean ketemu = false;
@@ -186,6 +202,10 @@ public class Main{
                         System.out.println("4,Kota");
                         System.out.println("5,Semua (kecuali id)");
                         System.out.print("Masukan nomor: ");
+                        while(!sc.hasNextInt()){
+                            System.out.print("Masukan hanya angka: ");
+                            sc.next();
+                        }
                         int update_yang_mana = sc.nextInt();
                         sc.nextLine();
                         if(update_yang_mana == 1){
@@ -200,6 +220,10 @@ public class Main{
                         }
                         else if(update_yang_mana == 3){
                             System.out.print("Masukan jumlah studio: ");
+                            while(!sc.hasNextInt()){
+                                System.out.print("Masukan hanya angka: ");
+                                sc.next();
+                            }
                             B.setjumlah_studio(sc.nextInt());
                             sc.nextLine();
                             System.out.println("Pergantian jumlah studio berhasil...");
@@ -243,6 +267,10 @@ public class Main{
             }
             else if("delete".equalsIgnoreCase(pilihan)){
                 System.out.print("Masukan id bioskop yang mau dihapus: ");
+                while(!sc.hasNextInt()){
+                    System.out.print("Masukan hanya angka: ");
+                    sc.next();
+                }
                 int hapus = sc.nextInt();
                 sc.nextLine();
                 boolean ketemu = false;
@@ -260,6 +288,10 @@ public class Main{
             }
             else if("search".equalsIgnoreCase(pilihan)){
                 System.out.print("Masukan id bioskop yang mau dicari: ");
+                while(!sc.hasNextInt()){
+                    System.out.print("Masukan hanya angka: ");
+                    sc.next();
+                }
                 int cari = sc.nextInt();
                 sc.nextLine();
                 boolean ketemu = false;
