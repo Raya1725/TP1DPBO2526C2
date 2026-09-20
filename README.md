@@ -22,6 +22,10 @@ user akan diminta memasukan ulang.
 
 - Jika saat memasukan id, id tersebut sudah ada dalam arraylist
   ![gambar error handling id sudah ada](Dokumentasi/Error%20Handling/Error%20Handling%20php%20id%20ada.png)
+
+# Struktur Repo
+
+  ![gambar struktur file](Dokumentasi/StrukturFile/struktur_TP1DPBO2526C2.png)
   
 # Output Java
 
