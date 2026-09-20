@@ -11,7 +11,7 @@ Saya Renaldy Heryana dengan NIM 2509867 mengerjakan Tugas Praktikum 1 dalam mata
 # ERROR HANDLING
 
 - Jika diminta memasukan id dan jumlah studio, maka ketika memasukan selain integer atau angka
-user akan diminta memasukan ulang
+user akan diminta memasukan ulang.
 ![gambar error handling harus integer](Dokumentasi/Error%20Handling/Error%20handling%20memasukan%20selain%20angka.png)
 
 - Memasukan id selain integer PHP
