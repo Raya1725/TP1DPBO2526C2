@@ -38,7 +38,7 @@ class Bioskop:
     def getkota(self) -> str:
         return self.__kota
 
-    def set(self, kota:str) -> None:
+    def setkota(self, kota:str) -> None:
         self.__kota = str(kota)
 
     

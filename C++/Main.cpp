@@ -60,6 +60,7 @@ int main(){
                             cout << "Masukan hanya angka: ";
                             cin >> id;
                         }
+                        cin.ignore();
                     }
                 }
                 else{
@@ -68,10 +69,10 @@ int main(){
             }
             cout << "Masukan Nama: ";
             string nama;
-            cin >> nama;
+            getline(cin, nama);
             cout << "Masukan Alamat: ";
             string alamat;
-            cin >> alamat;
+            getline(cin, alamat);
             cout << "Masukan Jumlah Studio: ";
             int jumlah_studio;
             cin >> jumlah_studio;
@@ -81,9 +82,10 @@ int main(){
                 cout << "Masukan hanya angka: ";
                 cin >> jumlah_studio;
             }
+            cin.ignore();
             cout << "Masukan Kota: ";
             string kota;
-            cin >> kota;
+            getline(cin, kota);
             //memasukan data dengan konstruk bioskopp baru lalu sekalian memasukan data kedalamnya
             Bioskop B = Bioskop(id, nama, alamat, jumlah_studio, kota);
             daftarbioskop.push_back(B);//memasukan data ke dalam vector
@@ -188,18 +190,19 @@ int main(){
                         cout << "Masukan hanya angka: ";
                         cin >> update_pilihan;
                     }
+                    cin.ignore();
                     //berbagai kondisi sesuai apa yang dipilih oleh user
                     if(update_pilihan == 1){
                         cout << "Masukan nama: ";
                         string nama;
-                        cin >> nama;
+                        getline(cin, nama);
                         B.setnama(nama);
                         cout << "Pergantian nama berhasil...." << endl;
                     }
                     else if(update_pilihan == 2){
                         cout << "Masukan alamat: ";
                         string alamat;
-                        cin >> alamat;
+                        getline(cin, alamat);
                         B.setalamat(alamat);
                         cout << "Pergantian alamat berhasil...." << endl;
                     }
@@ -213,30 +216,38 @@ int main(){
                             cout << "Masukan hanya angka: ";
                             cin >> jumlah;
                         }
+                        cin.ignore();
                         B.setjumlah_studio(jumlah);
                         cout << "Pergantian jumlah studio berhasil...." << endl;
                     }
                     else if(update_pilihan == 4){
                         cout << "Masukan kota: ";
                         string kota;
-                        cin >> kota;
+                        getline(cin, kota);
                         B.setkota(kota);
                         cout << "Pergantian kota berhasil...." << endl;
                     }
                     else if(update_pilihan == 5){
                         cout << "Masukan nama: " ;
                         string semua;
-                        cin >> semua;
+                        getline(cin, semua);
                         B.setnama(semua);
                         cout << "Masukan alamat: ";
-                        cin >> semua;
+                        getline(cin, semua);
                         B.setalamat(semua);
                         int angka;
                         cout << "Masukan jumlah studio: ";
                         cin >> angka;
+                        while(cin.fail()){
+                            cin.clear();
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                            cout << "Masukan hanya angka: ";
+                            cin >> angka;
+                        }
+                        cin.ignore();
                         B.setjumlah_studio(angka);
                         cout << "Masukan jumlah kota: ";
-                        cin >> semua;
+                        getline(cin, semua);
                         B.setkota(semua);
                         cout << "Pergantian seluruh data berhasil...." << endl;
                     }
@@ -264,6 +275,7 @@ int main(){
                 cout << "Masukan hanya angka: ";
                 cin >> hapus;
             }
+            cin.ignore();
             bool ketemu = false;
             iter = daftarbioskop.begin();
             while(ketemu == false && iter != daftarbioskop.end()){
@@ -294,6 +306,7 @@ int main(){
                 cout << "Masukan hanya angka: ";
                 cin >> cari;
             }
+            cin.ignore();
             bool ketemu = false;
             iter = daftarbioskop.begin();
             //perulangan untuk mencari data sesuai masukan user
