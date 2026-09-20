@@ -14,8 +14,14 @@ Saya Renaldy Heryana dengan NIM 2509867 mengerjakan Tugas Praktikum 1 dalam mata
 user akan diminta memasukan ulang
 ![gambar error handling harus integer](Dokumentasi/Error%20Handling/Error%20handling%20memasukan%20selain%20angka.png)
 
+- Memasukan id selain integer PHP
+![gambar error handling harus integer](Dokumentasi/Error%20Handling/Error%20Handling%20PHP%20id%20selain%20angka.png)
+
 - Jika saat memasukan id, id tersebut sudah ada dalam arraylist
-  ![gambar error handling harus integer](Dokumentasi/Error%20Handling/Error%20handling%20memasukan%20id%20yang%20sudah%20ada.png)
+  ![gambar error handling id sudah ada](Dokumentasi/Error%20Handling/Error%20handling%20memasukan%20id%20yang%20sudah%20ada.png)
+
+- Jika saat memasukan id, id tersebut sudah ada dalam arraylist
+  ![gambar error handling id sudah ada](Dokumentasi/Error%20Handling/Error%20Handling%20php%20id%20ada.png)
   
 # Output Java
 
@@ -70,17 +76,23 @@ user akan diminta memasukan ulang
 
 # Output PHP
 
--Insert/Menambah data
-![gambar output insert PHP](Dokumentasi/PHP/insert%20php.png)
+-Insert/Menambah data 
+![gambar output sebelum insert PHP](Dokumentasi/PHP/Insert%20sebelum%20php.png)
+
+![gambar output sesudah insert PHP](Dokumentasi/PHP/Insert%20sesudah%20php.png)
 
 -Update/Mengedit data
-![gambar output Update PHP](Dokumentasi/PHP/Update%20php.png)
+![gambar output sebelum Update PHP](Dokumentasi/PHP/Update%20sebelum%20php.png)
+
+![gambar output sesudah Update PHP](Dokumentasi/PHP/Update%20sesudah%20php.png)
 
 -Show/Menampilkan data
 ![gambar output Show PHP](Dokumentasi/PHP/Show%20php.png)
 
 -Delete/Menghapus data
-![gambar output Delete PHP](Dokumentasi/PHP/Delete%20php.png)
+![gambar output sebelum Delete PHP](Dokumentasi/PHP/Delete%20sebelum%20php.png)
+
+![gambar output sesudah Delete PHP](Dokumentasi/PHP/Delete%20sesudah%20php.png)
 
 -Search/Mencari data
 ![gambar output Search PHP](Dokumentasi/PHP/Search%20php.png)
